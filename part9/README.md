@@ -92,18 +92,6 @@ VALUES (
 
 Read example:
 ```sql
-CREATE TABLE `products` (
-  `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
-  `category_id` BINARY(16) NOT NULL,
-  `brand_id` BINARY(16) NOT NULL,
-  `provider_id` BINARY(16) NOT NULL,
-  `attributes` JSON NOT NULL
-);
-
 SELECT * FROM `products`
 WHERE
     `category_id` = UUID_TO_BIN('aa047367-9ced-4ca1-9aec-0b5a6c8293c9') AND
@@ -112,18 +100,6 @@ WHERE
 
 Update example:
 ```sql
-CREATE TABLE `products` (
-  `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
-  `category_id` BINARY(16) NOT NULL,
-  `brand_id` BINARY(16) NOT NULL,
-  `provider_id` BINARY(16) NOT NULL,
-  `attributes` JSON NOT NULL
-);
-
 UPDATE `products`
 SET `attributes` = JSON_INSERT(
     `attributes` ,
@@ -136,18 +112,6 @@ WHERE
 
 Delete example:
 ```sql
-CREATE TABLE `products` (
-  `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
-  `category_id` BINARY(16) NOT NULL,
-  `brand_id` BINARY(16) NOT NULL,
-  `provider_id` BINARY(16) NOT NULL,
-  `attributes` JSON NOT NULL
-);
-
 UPDATE `products`
 SET `attributes` = JSON_REMOVE(`attributes` , '$.screen')
 WHERE
