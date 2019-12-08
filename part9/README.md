@@ -27,11 +27,28 @@ as fast as possible no matter how big database is.
 As well as that, range partitioning by year might be useful for analytical goals, e.x:
 reports and etc.
 
-### Data types
+We can't use foreign keys on partitioned tables because of [limitations](https://dev.mysql.com/doc/refman/8.0/en/partitioning-limitations.html),
+so we should get rid of them in `orders` table.
+As well as that we can't use timezone-dependent expressions in (sub)partitioning function, thus we have to 
+change `timestamp` type to `datetime`.
 
-Changed `buildings`.`number` field type from `int` to `int unsigned`. Building's number can't be negative.
-Changed `orders`.`quantity` field type from `int` to `int unsigned`. Order's quantity can't be negative.
-Also added a constraint to prevent zero values for `quantity`: `CHECK ('quantity' > 0)`.
+```sql
+mysql> EXPLAIN SELECT * FROM `orders`\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: orders
+   partitions: y2016,y2017,y2018,y2019,y20xx
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 1
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.00 sec)
+```
 
 ### JSON
 
@@ -52,8 +69,9 @@ CREATE TABLE `products` (
   `attributes` JSON NOT NULL
 );
 
-INSERT INTO `products`(`name`, `category_id`, `brand_id`, `provider_id`, `attributes`)
+INSERT INTO `products`(`id`,`name`, `category_id`, `brand_id`, `provider_id`, `attributes`)
 VALUES (
+    UUID_TO_BIN(UUID()),
     'Macbook Pro 16',
     UUID_TO_BIN('aa047367-9ced-4ca1-9aec-0b5a6c8293c9'),
     UUID_TO_BIN('214debe4-7525-4af3-92e9-d709256c8648'),
@@ -62,8 +80,9 @@ VALUES (
 );
 
 -- Same using JSON_OBJECT
-INSERT INTO `products`(`name`, `category_id`, `brand_id`, `provider_id`, `attributes`)
+INSERT INTO `products`(`id`, `name`, `category_id`, `brand_id`, `provider_id`, `attributes`)
 VALUES (
+    UUID_TO_BIN(UUID()),
     'Macbook Pro 16',
     UUID_TO_BIN('aa047367-9ced-4ca1-9aec-0b5a6c8293c9'),
     UUID_TO_BIN('214debe4-7525-4af3-92e9-d709256c8648'),
@@ -76,8 +95,9 @@ VALUES (
 );
 
 -- Same using JSON_MERGE and JSON_OBJECT
-INSERT INTO `products`(`name`, `category_id`, `brand_id`, `provider_id`, `attributes`)
+INSERT INTO `products`(`id`, `name`, `category_id`, `brand_id`, `provider_id`, `attributes`)
 VALUES (
+    UUID_TO_BIN(UUID()),
     'Macbook Pro 16',
     UUID_TO_BIN('aa047367-9ced-4ca1-9aec-0b5a6c8293c9'),
     UUID_TO_BIN('214debe4-7525-4af3-92e9-d709256c8648'),

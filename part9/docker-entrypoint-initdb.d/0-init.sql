@@ -3,100 +3,100 @@ USE otusdb;
 
 CREATE TABLE `customers` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
   `title` ENUM('Mr','Mrs','Ms','Miss') COMMENT 'customer titile, used in emails',
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
+  `first_name` VARCHAR(255) NOT NULL,
+  `last_name` VARCHAR(255) NOT NULL,
   `gender` ENUM('male', 'female') NOT NULL,
-  `birth_date` timestamp NOT NULL CHECK (`birth_date` > '1900-01-01'),
-  `email` varchar(255) UNIQUE NOT NULL,
+  `birth_date` DATETIME NOT NULL CHECK (`birth_date` > '1900-01-01'),
+  `email` VARCHAR(255) UNIQUE NOT NULL,
   `marital_status` ENUM('married', 'single', 'divorced', 'widowed'),
   `correspondence_language` ENUM ('RU', 'EN', 'IT', 'CS', 'DE', 'PL', 'FR', 'NL', 'HU') COMMENT 'language that is used in emails'
 );
 
 CREATE TABLE `customer_addresses` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
   `address_id` BINARY(16) NOT NULL,
   `customer_id` BINARY(16) NOT NULL,
-  `is_default` bool COMMENT 'if flag is true - this address will be passed to all new orders by default'
+  `is_default` BOOL COMMENT 'if flag is true - this address will be passed to all new orders by default'
 );
 
 CREATE TABLE `addresses` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
   `building_id` BINARY(16) NOT NULL,
-  `postal_code` varchar(255)
+  `postal_code` VARCHAR(255)
 );
 
 CREATE TABLE `countries` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `name` VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE `regions` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `name` VARCHAR(255) NOT NULL,
   `country_id` BINARY(16) NOT NULL
 );
 
 CREATE TABLE `cities` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `name` VARCHAR(255) NOT NULL,
   `region_id` BINARY(16) NOT NULL
 );
 
 CREATE TABLE `streets` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `name` VARCHAR(255) NOT NULL,
   `city_id` BINARY(16) NOT NULL
 );
 
 CREATE TABLE `buildings` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `number` int unsigned NOT NULL,
-  `litera` varchar(2),
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `number` INT UNSIGNED NOT NULL,
+  `litera` VARCHAR(2),
   `street_id` BINARY(16) NOT NULL
 );
 
 CREATE TABLE `products` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `name` VARCHAR(255) NOT NULL,
   `category_id` BINARY(16) NOT NULL,
   `brand_id` BINARY(16) NOT NULL,
-  `provider_id` BINARY(16) NOT NULL,
-  `attributes` JSON NOT NULL
+  `provider_id` BINARY(16) NOT NULL
+#   `attributes` JSON NOT NULL
 );
 
 CREATE TABLE `provider_products` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
   `product_id` BINARY(16) NOT NULL,
   `provider_id` BINARY(16) NOT NULL,
   `price_id` BINARY(16) NOT NULL COMMENT 'providers price for the product'
@@ -104,81 +104,76 @@ CREATE TABLE `provider_products` (
 
 CREATE TABLE `prices` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `amount` numeric(15, 2) NOT NULL COMMENT 'amount of the price',
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `amount` NUMERIC(15, 2) NOT NULL COMMENT 'amount of the price',
   `currency_id` BINARY(16) NOT NULL
 );
 
 CREATE TABLE `currencies` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `code` varchar(255) NOT NULL COMMENT 'code of the currency',
-  `cbr_name` varchar(255) NOT NULL COMMENT 'central bank of the currency',
-  `rate` varchar(255) NOT NULL COMMENT 'rate of the currency'
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `code` VARCHAR(255) NOT NULL COMMENT 'code of the currency',
+  `cbr_name` VARCHAR(255) NOT NULL COMMENT 'central bank of the currency',
+  `rate` VARCHAR(255) NOT NULL COMMENT 'rate of the currency'
 );
 
 CREATE TABLE `categories` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
   `parent_id` BINARY(16) COMMENT 'parent category',
-  `name` varchar(255) NOT NULL
+  `name` VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE `orders` (
-  `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
+  `id` BINARY(16),
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
   `customer_id` BINARY(16) NOT NULL COMMENT 'customer which makes the order',
   `product_id` BINARY(16) NOT NULL COMMENT 'product in the order',
   `price_id` BINARY(16) NOT NULL COMMENT 'price for which one item of the product was purchased',
   `address_id` BINARY(16) NOT NULL COMMENT 'order address',
-  `quantity` int unsigned NOT NULL CHECK (`quantity` > 0) COMMENT 'quantity of a product in the order',
-  `status` ENUM('ON_HOLD', 'PROCESSING', 'COMPLETED') DEFAULT 'ON_HOLD' COMMENT 'status of the order'
-) PARTITION BY RANGE(YEAR(`created_at`)) (
-    PARTITION y2016 VALUES LESS THAN (2016),
-    PARTITION y2017 VALUES LESS THAN (2017),
-    PARTITION y2018 VALUES LESS THAN (2018),
-    PARTITION y2019 VALUES LESS THAN (2019),
-    PARTITION y20xx VALUES LESS THAN MAXVALUE
+  `quantity` INT UNSIGNED NOT NULL CHECK (`quantity` > 0) COMMENT 'quantity of a product in the order',
+  `status` ENUM('ON_HOLD', 'PROCESSING', 'COMPLETED') DEFAULT 'ON_HOLD' COMMENT 'status of the order',
+  PRIMARY KEY (`id`, `created_at`)
 );
 
 CREATE TABLE `manufacturers` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `contact_number` varchar(15) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `contact_number` VARCHAR(15) NOT NULL,
   `address_id` BINARY(16) NOT NULL
 );
 
 CREATE TABLE `brands` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `contact_number` varchar(15) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `contact_number` VARCHAR(15) NOT NULL,
   `manufacturer_id` BINARY(16) NOT NULL
 );
 
 CREATE TABLE `providers` (
   `id` BINARY(16) PRIMARY KEY,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp,
-  `deleted_at` timestamp,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `contact_number` varchar(15) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME,
+  `deleted_at` DATETIME,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `contact_number` VARCHAR(15) NOT NULL,
   `address_id` BINARY(16) NOT NULL COMMENT 'address of the provider'
 );
 
@@ -268,7 +263,7 @@ CREATE INDEX `idx_categories_parent_id` ON `categories` (`parent_id`);
 
 CREATE INDEX `idx_orders_created_at` ON `orders` (`created_at`);
 
-CREATE UNIQUE INDEX `idx_orders_customer_id_product_id` ON `orders` (`customer_id`, `product_id`);
+CREATE UNIQUE INDEX `idx_orders_customer_id_product_id` ON `orders` (`id`, `created_at`, `customer_id`, `product_id`);
 
 CREATE INDEX `idx_orders_price_id` ON `orders` (`price_id`);
 
