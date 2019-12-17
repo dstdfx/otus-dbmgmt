@@ -18,7 +18,7 @@ docker-compose down -v --remove-orphans
 
 ## Transaction within procedure
 
-Implemented in `./docker-entrypoint-initdb.d/2-procedure.sql`.
+Implemented in [2-procedure.sql](https://github.com/dstdfx/otus-dbmgmt/blob/master/part11/docker-entrypoint-initdb.d/2-procedure.sql).
 
 `update_customer_email_with_log` updates customer email and stores info into `log_action` table within a transaction.
 
@@ -67,4 +67,4 @@ mysql> select created_at, operation, description from log_actions;
 
 ## Load data via `LOAD DATA` command
 
-Implemented in `./docker-entrypoint-initdb.d/3-load-data-from-csv.sql`.
+Implemented in [3-load-data-from-csv.sql](https://github.com/dstdfx/otus-dbmgmt/blob/master/part11/docker-entrypoint-initdb.d/3-load-data-from-csv.sql).
