@@ -41,7 +41,21 @@ mysql> select * from products_offers_view;
 9 rows in set (0.00 sec)
 ```
 
-`categories_overview` show a summarize amount of products for each category and for all 
+`categories_products_overview` lists most expensive/cheap product for each category.
+
+```sql
+mysql> select * from categories_products_overview;
++--------------------------------------+--------------------------------------+----------------+--------------------------------------+------------------+
+| category_id                          | most_exp                             | most_exp_price | most_cheap                           | most_cheap_price |
++--------------------------------------+--------------------------------------+----------------+--------------------------------------+------------------+
+| 3c9707d7-2338-11ea-8b8b-0242ac1d0002 | 3c983291-2338-11ea-8b8b-0242ac1d0002 |        7499.00 | 3c9831d8-2338-11ea-8b8b-0242ac1d0002 |          2490.80 |
+| 3c97082f-2338-11ea-8b8b-0242ac1d0002 | 3c98338f-2338-11ea-8b8b-0242ac1d0002 |        7499.00 | 3c9832e6-2338-11ea-8b8b-0242ac1d0002 |          5499.00 |
+| 3c97088d-2338-11ea-8b8b-0242ac1d0002 | 3c9833e4-2338-11ea-8b8b-0242ac1d0002 |        7499.00 | 3c98348d-2338-11ea-8b8b-0242ac1d0002 |          5499.00 |
++--------------------------------------+--------------------------------------+----------------+--------------------------------------+------------------+
+3 rows in set (0.01 sec)
+```
+
+`categories_overview` shows a summarize amount of products for each category and for all.
 
 ```sql
 mysql> select * from categories_overview;
