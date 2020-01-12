@@ -18,7 +18,7 @@ docker-compose down -v --remove-orphans
 
 ## Views
 
-Implemented in [3-views.sql](https://github.com/dstdfx/otus-dbmgmt/blob/master/part12/docker-entrypoint-initdb.d/3-views.sql).
+Implemented in [2-views.sql](https://github.com/dstdfx/otus-dbmgmt/blob/master/part12/docker-entrypoint-initdb.d/3-views.sql).
 
 `products_offers_view` shows available products and offers info: offers count and max/min/avg prices.
 Note, that there must be at least 2 offers for a product to be shown.

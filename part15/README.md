@@ -24,7 +24,7 @@ docker-compose down -v --remove-orphans
 
 ## Procedures
 
-Implemented in [3-procedures.sql](https://github.com/dstdfx/otus-dbmgmt/blob/master/part15/docker-entrypoint-initdb.d/3-procedures.sql).
+Implemented in [2-procedures.sql](https://github.com/dstdfx/otus-dbmgmt/blob/master/part15/docker-entrypoint-initdb.d/3-procedures.sql).
 
 Fetch actual categories' id's. Note that they can differs from id's in example:
 ```sql

@@ -44,7 +44,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 ## Full-text search example
 
-Implemented in [3-full-text-search.sql](https://github.com/dstdfx/otus-dbmgmt/blob/master/part13/docker-entrypoint-initdb.d/3-full-text-search.sql).
+Implemented in [2-full-text-search.sql](https://github.com/dstdfx/otus-dbmgmt/blob/master/part13/docker-entrypoint-initdb.d/3-full-text-search.sql).
 
 ```sql
 mysql> select bin_to_uuid(id), name, description from products where match(name,description) against('A world');
