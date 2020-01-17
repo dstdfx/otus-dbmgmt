@@ -115,8 +115,9 @@ root@2713756a6743:/otus_backup# chown mysql:mysql /var/lib/mysql/otus/articles.*
 ```
 
 Import copied tablespace:
-```bash
-ALTER TABLE articles IMPORT TABLESPACE;
+```sql
+mysql> ALTER TABLE articles IMPORT TABLESPACE;
+Query OK, 0 rows affected, 1 warning (0.13 sec)
 ```
 
 Check table data:
