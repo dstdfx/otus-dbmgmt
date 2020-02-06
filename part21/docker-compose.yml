@@ -8,6 +8,8 @@ services:
       POSTGRES_DB:       "otusdb"
     networks:
       - otusdb-nw
+    volumes:
+      - data:/var/lib/postgresql
     ports:
       - "5432:5432"
     healthcheck:
@@ -19,3 +21,6 @@ services:
 networks:
   otusdb-nw:
     name: otusdb-network
+
+volumes:
+  data:
