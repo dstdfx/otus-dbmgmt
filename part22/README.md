@@ -80,5 +80,6 @@ store_db=# \d
  public | providers          | table | store_admin
  public | regions            | table | store_admin
  public | streets            | table | store_admin
+ public | log_actions        | table | store_admin
 (17 rows)
 ```

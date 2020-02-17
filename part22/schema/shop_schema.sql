@@ -5,6 +5,7 @@ CREATE TYPE "titles" AS ENUM ('Mr','Mrs','Ms','Miss');
 CREATE TYPE "genders" AS ENUM ('male', 'female');
 CREATE TYPE "marital_statuses" AS ENUM ('married', 'single', 'divorced', 'widowed');
 CREATE TYPE "order_statuses"  AS ENUM ('ON_HOLD', 'PROCESSING', 'COMPLETED');
+CREATE TYPE "action_types" AS ENUM('CHANGE_PERSONAL_INFO', 'CREATE_ORDER', 'CHANGE_ORDER', 'CANCEL_ORDER');
 
 CREATE TABLE "customers" (
     "id" uuid PRIMARY KEY DEFAULT (uuid_generate_v4()),
@@ -28,7 +29,7 @@ CREATE TABLE "customer_addresses"(
     "deleted_at"  TIMESTAMP,
     "address_id"  uuid NOT NULL,
     "customer_id" uuid NOT NULL,
-    "is_default"  BOOL DEFAULT true
+    "is_default"  BOOL
 );
 
 CREATE TABLE "addresses" (
@@ -63,7 +64,6 @@ CREATE TABLE "cities" (
     "updated_at"  TIMESTAMP,
     "deleted_at"  TIMESTAMP,
     "name" VARCHAR(255) NOT NULL,
-    "country_id" uuid NOT NULL,
     "region_id" uuid NOT NULL
 );
 
@@ -94,7 +94,6 @@ CREATE TABLE "products" (
     "name" VARCHAR(255) NOT NULL,
     "category_id" uuid NOT NULL,
     "brand_id" uuid NOT NULL,
-    "provider_id" uuid NOT NULL,
     "attributes" JSONB NOT NULL
 );
 
@@ -181,6 +180,14 @@ CREATE TABLE "providers" (
     "email" VARCHAR(255) NOT NULL,
     "contact_number" VARCHAR(15) NOT NULL,
     "address_id" uuid NOT NULL
+);
+
+CREATE TABLE "log_actions" (
+    "id"          uuid PRIMARY KEY DEFAULT (uuid_generate_v4()),
+    "created_at"  TIMESTAMP        DEFAULT (now()),
+    "customer_id" uuid NOT NULL,
+    "operation" ENUM('CHANGE_PERSONAL_INFO', 'CREATE_ORDER', 'CHANGE_ORDER', 'CANCEL_ORDER') NOT NULL,
+    "description" VARCHAR(255) NOT NULL
 );
 
 ALTER TABLE "customer_addresses" ADD FOREIGN KEY ("address_id") REFERENCES "addresses" ("id");
