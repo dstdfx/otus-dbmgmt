@@ -186,7 +186,7 @@ CREATE TABLE "log_actions" (
     "id"          uuid PRIMARY KEY DEFAULT (uuid_generate_v4()),
     "created_at"  TIMESTAMP        DEFAULT (now()),
     "customer_id" uuid NOT NULL,
-    "operation" ENUM('CHANGE_PERSONAL_INFO', 'CREATE_ORDER', 'CHANGE_ORDER', 'CANCEL_ORDER') NOT NULL,
+    "operation" "action_types" NOT NULL,
     "description" VARCHAR(255) NOT NULL
 );
 
