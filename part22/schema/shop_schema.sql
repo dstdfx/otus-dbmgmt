@@ -208,8 +208,6 @@ ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories" (
 
 ALTER TABLE "products" ADD FOREIGN KEY ("brand_id") REFERENCES "brands" ("id");
 
-ALTER TABLE "products" ADD FOREIGN KEY ("provider_id") REFERENCES "providers" ("id");
-
 ALTER TABLE "provider_products" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
 
 ALTER TABLE "provider_products" ADD FOREIGN KEY ("provider_id") REFERENCES "providers" ("id");
@@ -259,8 +257,6 @@ CREATE INDEX "idx_products_created_at" ON "products" ("created_at");
 CREATE INDEX "idx_products_category_id" ON "products" ("category_id");
 
 CREATE INDEX "idx_products_brand_id" ON "products" ("brand_id");
-
-CREATE INDEX "idx_products_provider_id" ON "products" ("provider_id");
 
 CREATE INDEX "idx_provider_products_created_at" ON "provider_products" ("created_at");
 
