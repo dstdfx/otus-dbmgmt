@@ -52,7 +52,8 @@ otusdb=# select id, first_name from customers where first_name LIKE 'Customer_A%
 
 2. Joins
 
-Inner join:
+For `INNER JOIN` table's order does not make sense.
+
 ```sql
 otusdb=# select c.id as customer_id, c.email as customer_email
 from orders as o inner join customers as c on c.id = o.customer_id
@@ -64,7 +65,21 @@ where (quantity between 5 AND 20) and o.status = 'COMPLETED';
 (2 rows)
 ```
 
-Left join (joins all the values from `products` table with matched in `categories` table):
+Equals to the query above:
+```sql
+otusdb=# select c.id as customer_id, c.email as customer_email
+from customers as c inner join orders as o on c.id = o.customer_id
+where (quantity between 5 AND 20) and o.status = 'COMPLETED';
+             customer_id              |  customer_email
+--------------------------------------+------------------
+ 9726b10a-2420-4d0c-8ae9-1424fab89495 | test-a@gmail.com
+ 4ede46c3-505f-4095-8711-18836e19a77a | test-c@gmail.com
+(2 rows)
+```
+
+For `LEFT JOIN` table's order makes sense.
+
+Joins all the values from `products` table matched by `foreign key` with `categories` table:
 ```sql
 otusdb=# select p.id as product_id, c.name as category_name from products as p left join categories as c on p.category_id = c.id;
               product_id              | category_name
@@ -81,7 +96,8 @@ otusdb=# select p.id as product_id, c.name as category_name from products as p l
 (9 rows)
 ```
 
-Left join, reverse order (joins all values from `categories` table with matched `products` table):
+Reversed order, `categories` table goes first.
+Joins all values from `categories` table matched by `foreign key` with `products` table:
 ```sql
 otusdb=# select c.name as category_name, p.id as product_id from categories as c left join products as p on p.category_id = c.id;
  category_name |              product_id
