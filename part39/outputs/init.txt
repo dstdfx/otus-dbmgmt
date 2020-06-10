@@ -1,0 +1,184 @@
+~/g/s/g/d/otus-dbmgmt   …  part39  ./init.sh
+MongoDB shell version v4.0.18
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ea599891-3857-4f22-a36a-2b5ec94c4f47") }
+MongoDB server version: 4.0.18
+{
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817213, 1),
+	"$gleStats" : {
+		"lastOpTime" : Timestamp(1591817213, 1),
+		"electionId" : ObjectId("000000000000000000000000")
+	},
+	"lastCommittedOpTime" : Timestamp(0, 0),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817213, 1),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+bye
+MongoDB shell version v4.0.18
+connecting to: mongodb://127.0.0.1:27018/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4fe9266f-059f-4187-a737-cba151380570") }
+MongoDB server version: 4.0.18
+{
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817214, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817214, 1),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+bye
+MongoDB shell version v4.0.18
+connecting to: mongodb://127.0.0.1:27019/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c6722d70-9673-479c-bec3-a1d1d32b183e") }
+MongoDB server version: 4.0.18
+{
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817214, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817214, 1),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+bye
+MongoDB shell version v4.0.18
+connecting to: mongodb://127.0.0.1:27020/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7f027177-b49f-4e92-89c4-49ceaf339ca1") }
+MongoDB server version: 4.0.18
+{
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817215, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817215, 1),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+bye
+Wait for 30 seconds to get cluster ready
+MongoDB shell version v4.0.18
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4fa20369-8a53-43db-822a-3783ae7e7714") }
+MongoDB server version: 4.0.18
+{
+	"shardAdded" : "shard01",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 6),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 6),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+{
+	"shardAdded" : "shard01",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 6),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 6),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+{
+	"shardAdded" : "shard01",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 6),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 6),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+{
+	"shardAdded" : "shard02",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 11),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 13),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+{
+	"shardAdded" : "shard02",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 13),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 13),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+{
+	"shardAdded" : "shard02",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 13),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 13),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+{
+	"shardAdded" : "shard03",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 17),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 17),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+{
+	"shardAdded" : "shard03",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 17),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 17),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+{
+	"shardAdded" : "shard03",
+	"ok" : 1,
+	"operationTime" : Timestamp(1591817246, 17),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591817246, 17),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+bye

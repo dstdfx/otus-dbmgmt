@@ -1,0 +1,152 @@
+ ~/g/s/g/d/otus-dbmgmt   …  part39  docker-compose exec shard03a bash -c "echo 'rs.status()' | mongo --port 27020"
+MongoDB shell version v4.0.18
+connecting to: mongodb://127.0.0.1:27020/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b05e1617-9cc5-4a58-a90a-a31e429fd650") }
+MongoDB server version: 4.0.18
+{
+	"set" : "shard03",
+	"date" : ISODate("2020-06-10T20:36:58.414Z"),
+	"myState" : 1,
+	"term" : NumberLong(1),
+	"syncingTo" : "",
+	"syncSourceHost" : "",
+	"syncSourceId" : -1,
+	"heartbeatIntervalMillis" : NumberLong(2000),
+	"optimes" : {
+		"lastCommittedOpTime" : {
+			"ts" : Timestamp(1591821416, 1),
+			"t" : NumberLong(1)
+		},
+		"readConcernMajorityOpTime" : {
+			"ts" : Timestamp(1591821416, 1),
+			"t" : NumberLong(1)
+		},
+		"appliedOpTime" : {
+			"ts" : Timestamp(1591821416, 1),
+			"t" : NumberLong(1)
+		},
+		"durableOpTime" : {
+			"ts" : Timestamp(1591821416, 1),
+			"t" : NumberLong(1)
+		}
+	},
+	"lastStableCheckpointTimestamp" : Timestamp(1591821366, 1),
+	"electionCandidateMetrics" : {
+		"lastElectionReason" : "electionTimeout",
+		"lastElectionDate" : ISODate("2020-06-10T19:27:05.952Z"),
+		"electionTerm" : NumberLong(1),
+		"lastCommittedOpTimeAtElection" : {
+			"ts" : Timestamp(0, 0),
+			"t" : NumberLong(-1)
+		},
+		"lastSeenOpTimeAtElection" : {
+			"ts" : Timestamp(1591817215, 1),
+			"t" : NumberLong(-1)
+		},
+		"numVotesNeeded" : 2,
+		"priorityAtElection" : 1,
+		"electionTimeoutMillis" : NumberLong(10000),
+		"numCatchUpOps" : NumberLong(0),
+		"newTermStartDate" : ISODate("2020-06-10T19:27:05.956Z"),
+		"wMajorityWriteAvailabilityDate" : ISODate("2020-06-10T19:27:06.660Z")
+	},
+	"members" : [
+		{
+			"_id" : 0,
+			"name" : "shard03a:27020",
+			"health" : 1,
+			"state" : 1,
+			"stateStr" : "PRIMARY",
+			"uptime" : 4517,
+			"optime" : {
+				"ts" : Timestamp(1591821416, 1),
+				"t" : NumberLong(1)
+			},
+			"optimeDate" : ISODate("2020-06-10T20:36:56Z"),
+			"syncingTo" : "",
+			"syncSourceHost" : "",
+			"syncSourceId" : -1,
+			"infoMessage" : "",
+			"electionTime" : Timestamp(1591817225, 1),
+			"electionDate" : ISODate("2020-06-10T19:27:05Z"),
+			"configVersion" : 1,
+			"self" : true,
+			"lastHeartbeatMessage" : ""
+		},
+		{
+			"_id" : 1,
+			"name" : "shard03b:27020",
+			"health" : 1,
+			"state" : 2,
+			"stateStr" : "SECONDARY",
+			"uptime" : 4202,
+			"optime" : {
+				"ts" : Timestamp(1591821416, 1),
+				"t" : NumberLong(1)
+			},
+			"optimeDurable" : {
+				"ts" : Timestamp(1591821416, 1),
+				"t" : NumberLong(1)
+			},
+			"optimeDate" : ISODate("2020-06-10T20:36:56Z"),
+			"optimeDurableDate" : ISODate("2020-06-10T20:36:56Z"),
+			"lastHeartbeat" : ISODate("2020-06-10T20:36:57.911Z"),
+			"lastHeartbeatRecv" : ISODate("2020-06-10T20:36:56.471Z"),
+			"pingMs" : NumberLong(0),
+			"lastHeartbeatMessage" : "",
+			"syncingTo" : "shard03a:27020",
+			"syncSourceHost" : "shard03a:27020",
+			"syncSourceId" : 0,
+			"infoMessage" : "",
+			"configVersion" : 1
+		},
+		{
+			"_id" : 2,
+			"name" : "shard03c:27020",
+			"health" : 1,
+			"state" : 2,
+			"stateStr" : "SECONDARY",
+			"uptime" : 4202,
+			"optime" : {
+				"ts" : Timestamp(1591821416, 1),
+				"t" : NumberLong(1)
+			},
+			"optimeDurable" : {
+				"ts" : Timestamp(1591821416, 1),
+				"t" : NumberLong(1)
+			},
+			"optimeDate" : ISODate("2020-06-10T20:36:56Z"),
+			"optimeDurableDate" : ISODate("2020-06-10T20:36:56Z"),
+			"lastHeartbeat" : ISODate("2020-06-10T20:36:57.911Z"),
+			"lastHeartbeatRecv" : ISODate("2020-06-10T20:36:56.470Z"),
+			"pingMs" : NumberLong(0),
+			"lastHeartbeatMessage" : "",
+			"syncingTo" : "shard03a:27020",
+			"syncSourceHost" : "shard03a:27020",
+			"syncSourceId" : 0,
+			"infoMessage" : "",
+			"configVersion" : 1
+		}
+	],
+	"ok" : 1,
+	"operationTime" : Timestamp(1591821416, 1),
+	"$gleStats" : {
+		"lastOpTime" : Timestamp(0, 0),
+		"electionId" : ObjectId("7fffffff0000000000000001")
+	},
+	"lastCommittedOpTime" : Timestamp(1591821416, 1),
+	"$configServerState" : {
+		"opTime" : {
+			"ts" : Timestamp(1591821418, 9),
+			"t" : NumberLong(1)
+		}
+	},
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1591821418, 9),
+		"signature" : {
+			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+			"keyId" : NumberLong(0)
+		}
+	}
+}
+bye
