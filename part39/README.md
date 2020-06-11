@@ -48,7 +48,7 @@ part39_shard03b_1   docker-entrypoint.sh mongo ...   Up      27017/tcp
 part39_shard03c_1   docker-entrypoint.sh mongo ...   Up      27017/tcp
 ```
 
-Make init script excitable and run it, it will initialize the config server, shards and router:
+Make init script executable and run it, it will initialize the config server, shards and router:
 ```bash
 chmod a+x init.sh
 ./init.sh
